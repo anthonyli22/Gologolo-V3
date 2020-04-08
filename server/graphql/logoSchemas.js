@@ -9,6 +9,9 @@ var GraphQLInt = require("graphql").GraphQLInt;
 var GraphQLDate = require("graphql-date");
 var LogoModel = require("../models/Logo");
 
+/**
+ * These are GraphQL commands
+ */
 var logoType = new GraphQLObjectType({
   name: "logo",
   fields: function () {
@@ -43,7 +46,6 @@ var logoType = new GraphQLObjectType({
       fontSize: {
         type: GraphQLInt,
       },
-
       lastUpdate: {
         type: GraphQLDate,
       },
@@ -170,6 +172,12 @@ var mutation = new GraphQLObjectType({
             {
               text: params.text,
               color: params.color,
+              backgroundColor: params.backgroundColor,
+              borderColor: params.borderColor,
+              borderRadius: params.borderRadius,
+              borderWidth: params.borderWidth,
+              borderPadding: params.borderPadding,
+              borderMargin: params.borderMargin,
               fontSize: params.fontSize,
               lastUpdate: new Date(),
             },
@@ -186,6 +194,26 @@ var mutation = new GraphQLObjectType({
             type: new GraphQLNonNull(GraphQLString),
           },
         },
+        /**
+         * Sample removeLogo Query
+         * mutation{
+            removeLogo(id: "5e8e20971a5fc136bc016f52" ) {
+              _id
+              text
+              color
+              backgroundColor
+              borderColor
+              borderRadius
+              borderWidth
+              borderPadding
+              borderMargin
+              fontSize
+              lastUpdate
+            }
+          }
+         * @param {*} root 
+         * @param {*} params 
+         */
         resolve(root, params) {
           const remLogo = LogoModel.findByIdAndRemove(params.id).exec();
           if (!remLogo) {

@@ -1,2 +1,70 @@
 Sample queries
 
+- Adding a Logo
+mutation{
+  addLogo(
+    text: "Debugging Enterprises",
+    color: "#ff33dd",
+    backgroundColor: "#ff33dd",
+    borderColor: "#ff33dd",
+    borderRadius: 15,
+    borderMargin: 15,
+    borderPadding: 15,
+    borderWidth: 15,
+    fontSize: 44
+  ) {
+    lastUpdate
+  }
+}
+
+- Update a Logo
+mutation{
+  updateLogo(
+    id: "5e8e20ab1a5fc136bc016f54"
+    text: "Blue"
+    color: "#ffffff"
+    backgroundColor: "#ffffff" 
+    borderColor: "#ffffff"
+    borderRadius: 5
+    borderWidth: 5
+    borderPadding: 5
+    borderMargin: 10
+    fontSize: 15
+  ){
+    lastUpdate
+  }
+}
+
+
+- Remove a Logo
+mutation{
+  removeLogo(id: "5e8e209e1a5fc136bc016f53" ) {
+    _id
+    text
+    color
+    backgroundColor
+    borderColor
+    borderRadius
+    borderWidth
+    borderPadding
+    borderMargin
+    fontSize
+    lastUpdate
+  }
+}
+- Query all Logos
+{
+  logos {
+    _id
+    text
+    color
+    backgroundColor
+    borderColor
+    borderRadius
+    borderWidth
+    borderPadding
+    borderMargin
+    fontSize
+    lastUpdate
+  }
+}

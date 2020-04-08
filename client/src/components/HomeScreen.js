@@ -40,7 +40,7 @@ class HomeScreen extends Component {
                 <div id="home_banner_container">Gologolo</div>
                 <div>
                   <Link id="add_logo_button" to="/create">
-                    Add Logo
+                    <button> Add Logo</button>
                   </Link>
                 </div>
               </div>
