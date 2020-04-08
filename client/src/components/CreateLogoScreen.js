@@ -69,6 +69,7 @@ class CreateLogoScreen extends Component {
                         borderRadius: parseInt(borderRadius.value),
                         borderWidth: parseInt(borderWidth.value),
                         borderPadding: parseInt(borderPadding.value),
+                        borderMargin: parseInt(borderMargin.value),
                         fontSize: parseInt(fontSize.value),
                       },
                     });
