@@ -33,7 +33,7 @@ const ADD_LOGO = gql`
 
 class CreateLogoScreen extends Component {
   render() {
-    let text,
+    let text = "Text",
       color,
       backgroundColor,
       borderColor,
@@ -94,6 +94,7 @@ class CreateLogoScreen extends Component {
                         text = node;
                       }}
                       placeholder="Text"
+                      defaultValue="Text"
                       required
                     />
                   </div>
@@ -140,6 +141,8 @@ class CreateLogoScreen extends Component {
                     <label> Border Radius:</label>
                     <input
                       type="number"
+                      min="2"
+                      max="144"
                       className="form-control"
                       name="borderRadius"
                       ref={(node) => {
@@ -153,6 +156,8 @@ class CreateLogoScreen extends Component {
                     <label>Border Width:</label>
                     <input
                       type="number"
+                      min="2"
+                      max="144"
                       className="form-control"
                       name="borderWidth"
                       ref={(node) => {
@@ -166,6 +171,8 @@ class CreateLogoScreen extends Component {
                     <label>Border Padding:</label>
                     <input
                       type="number"
+                      min="2"
+                      max="144"
                       className="form-control"
                       name="borderPadding"
                       ref={(node) => {
@@ -179,6 +186,8 @@ class CreateLogoScreen extends Component {
                     <label> Border Margin:</label>
                     <input
                       type="number"
+                      min="2"
+                      max="144"
                       className="form-control"
                       name="borderMargin"
                       ref={(node) => {
@@ -192,6 +201,8 @@ class CreateLogoScreen extends Component {
                     <label htmlFor="fontSize">Font Size:</label>
                     <input
                       type="number"
+                      min="2"
+                      max="144"
                       className="form-control"
                       name="fontSize"
                       ref={(node) => {
@@ -200,7 +211,26 @@ class CreateLogoScreen extends Component {
                       placeholder="Font Size"
                     />
                   </div>
-
+                  <div
+                    className="col s8"
+                    style={{
+                      color: color,
+                      fontSize: fontSize,
+                      backgroundColor: backgroundColor, //changed
+                      borderRadius: borderRadius, //changed
+                      borderColor: borderColor,
+                      borderWidth: borderWidth,
+                      padding: borderPadding,
+                      margin: borderMargin,
+                      borderStyle: "solid",
+                      width: "auto",
+                      whiteSpace: "pre-wrap",
+                      minwidth: "max-content",
+                      overflow: "auto",
+                    }}
+                  >
+                    {text}
+                  </div>
                   <button type="submit" className="btn btn-success">
                     Submit
                   </button>

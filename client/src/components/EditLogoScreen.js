@@ -174,6 +174,8 @@ class EditLogoScreen extends Component {
                           <label> Border Radius:</label>
                           <input
                             type="number"
+                            min="2"
+                            max="144"
                             className="form-control"
                             name="borderRadius"
                             ref={(node) => {
@@ -189,6 +191,8 @@ class EditLogoScreen extends Component {
                           <label>Border Width:</label>
                           <input
                             type="number"
+                            min="2"
+                            max="144"
                             className="form-control"
                             name="borderWidth"
                             ref={(node) => {
@@ -204,6 +208,8 @@ class EditLogoScreen extends Component {
                           <label>Border Padding:</label>
                           <input
                             type="number"
+                            min="2"
+                            max="144"
                             className="form-control"
                             name="borderPadding"
                             ref={(node) => {
@@ -219,6 +225,8 @@ class EditLogoScreen extends Component {
                           <label> Border Margin:</label>
                           <input
                             type="number"
+                            min="2"
+                            max="144"
                             className="form-control"
                             name="borderMargin"
                             ref={(node) => {
@@ -233,7 +241,9 @@ class EditLogoScreen extends Component {
                         <div className="form-group">
                           <label htmlFor="fontSize">Font Size:</label>
                           <input
-                            type="text"
+                            type="number"
+                            min="2"
+                            max="144"
                             className="form-control"
                             name="fontSize"
                             ref={(node) => {
@@ -243,6 +253,26 @@ class EditLogoScreen extends Component {
                             defaultValue={data.logo.fontSize}
                             required
                           />
+                        </div>
+                        <div
+                          className="col s8"
+                          style={{
+                            color: data.logo.color,
+                            fontSize: data.logo.fontSize,
+                            backgroundColor: data.logo.backgroundColor, //changed
+                            borderRadius: data.logo.borderRadius, //changed
+                            borderColor: data.logo.borderColor,
+                            borderWidth: data.logo.borderWidth,
+                            padding: data.logo.borderPadding,
+                            margin: data.logo.borderMargin,
+                            borderStyle: "solid",
+                            width: "auto",
+                            whiteSpace: "pre-wrap",
+                            minwidth: "max-content",
+                            overflow: "auto",
+                          }}
+                        >
+                          {data.logo.text}
                         </div>
                         <button type="submit" className="btn btn-success">
                           Submit

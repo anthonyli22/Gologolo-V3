@@ -24,7 +24,7 @@ class HomeScreen extends Component {
 
           return (
             <div className="container row">
-              <div className="col s4">
+              <div className="col s4 card orange">
                 <h3>Recent Work</h3>
                 {data.logos
                   .sort(function (a, b) {
@@ -46,6 +46,7 @@ class HomeScreen extends Component {
                     </div>
                   ))}
               </div>
+              <div className="col s6"></div>
               <div className="col s8">
                 <div id="home_banner_container">Gologolo</div>
                 <div>

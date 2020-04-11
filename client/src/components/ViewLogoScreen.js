@@ -102,6 +102,26 @@ class ViewLogoScreen extends Component {
                     <dt>Last Updated:</dt>
                     <dd>{data.logo.lastUpdate}</dd>
                   </dl>
+                  <div
+                    className="col s8"
+                    style={{
+                      color: data.logo.color,
+                      fontSize: data.logo.fontSize,
+                      backgroundColor: data.logo.backgroundColor, //changed
+                      borderRadius: data.logo.borderRadius, //changed
+                      borderColor: data.logo.borderColor,
+                      borderWidth: data.logo.borderWidth,
+                      padding: data.logo.borderPadding,
+                      margin: data.logo.borderMargin,
+                      borderStyle: "solid",
+                      width: "auto",
+                      whiteSpace: "pre-wrap",
+                      minwidth: "max-content",
+                      overflow: "auto",
+                    }}
+                  >
+                    {data.logo.text}
+                  </div>
                   <Mutation
                     mutation={DELETE_LOGO}
                     key={data.logo._id}
