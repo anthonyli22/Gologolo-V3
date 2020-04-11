@@ -94,6 +94,7 @@ class CreateLogoScreen extends Component {
                         text = node;
                       }}
                       placeholder="Text"
+                      required
                     />
                   </div>
                   <div className="form-group">

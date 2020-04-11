@@ -57,13 +57,29 @@ class ViewLogoScreen extends Component {
                     <dd>{data.logo.text}</dd>
 
                     <dt>Color:</dt>
-                    <dd>{data.logo.color}</dd>
+                    <dd>
+                      {" "}
+                      <span style={{ background: data.logo.color }}>
+                        {" "}
+                        {data.logo.color}{" "}
+                      </span>
+                    </dd>
 
                     <dt>Background Color:</dt>
-                    <dd>{data.logo.backgroundColor}</dd>
+                    <dd>
+                      <span style={{ background: data.logo.backgroundColor }}>
+                        {" "}
+                        {data.logo.backgroundColor}{" "}
+                      </span>
+                    </dd>
 
                     <dt> Border Color: </dt>
-                    <dd> {data.logo.borderColor} </dd>
+                    <dd>
+                      <span style={{ background: data.logo.borderColor }}>
+                        {" "}
+                        {data.logo.borderColor}{" "}
+                      </span>
+                    </dd>
 
                     <dt> Border Radius: </dt>
                     <dd> {data.logo.borderRadius} </dd>
@@ -72,7 +88,10 @@ class ViewLogoScreen extends Component {
                     <dd> {data.logo.borderWidth} </dd>
 
                     <dt> Border Padding: </dt>
-                    <dd> {data.logo.borderPadding} </dd>
+                    <dd style={{ color: "blue" }}>
+                      {" "}
+                      {data.logo.borderPadding}{" "}
+                    </dd>
 
                     <dt> Border Margin: </dt>
                     <dd> {data.logo.borderMargin} </dd>
