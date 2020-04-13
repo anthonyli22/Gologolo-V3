@@ -41,7 +41,10 @@ class HomeScreen extends Component {
                       }}
                     >
                       <Link to={`/view/${logo._id}`}>
-                        <button> {logo.text} </button>
+                        <button style={{ whiteSpace: "pre" }}>
+                          {" "}
+                          {logo.text}{" "}
+                        </button>
                       </Link>
                     </div>
                   ))}
