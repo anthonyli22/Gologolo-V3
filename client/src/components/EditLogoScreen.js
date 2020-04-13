@@ -55,15 +55,15 @@ class EditLogoScreen extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      text: "Logo",
-      color: "#0000FF",
-      fontSize: 30,
-      borderColor: "#FFA500",
-      backgroundColor: "#FFC0CB", //chnaged
-      borderRadius: 40, //changed
-      borderWidth: 30,
-      borderPadding: 15,
-      borderMargin: 15,
+      text: null,
+      color: null,
+      backgroundColor: null,
+      borderColor: null,
+      borderRadius: null,
+      borderWidth: null,
+      borderPadding: null,
+      borderMargin: null,
+      fontSize: null,
     };
   }
 
@@ -76,48 +76,60 @@ class EditLogoScreen extends Component {
   borderPadding;
   borderMargin;
   fontSize;
+  buttonStatus = true;
+
   handleTextChange = (event) => {
-    this.text = event.target.value;
+    //this.text = event.target.value;
+    this.buttonStatus = false;
     this.setState({ text: event.target.value });
   };
 
   handleColorChange = (event) => {
-    this.color = event.target.value;
+    //this.color = event.target.value;
+    this.buttonStatus = false;
     this.setState({ color: event.target.value });
   };
 
   handleBackgroundColorChange = (event) => {
-    this.backgroundColor = event.target.value;
+    //this.backgroundColor = event.target.value;
+    this.buttonStatus = false;
     this.setState({ backgroundColor: event.target.value });
   };
 
   handleBorderColorChange = (event) => {
-    this.borderColor = event.target.value;
+    //this.borderColor = event.target.value;
+    this.buttonStatus = false;
     this.setState({ borderColor: event.target.value });
   };
 
   handleBorderRadiusChange = (event) => {
-    this.borderRadius = event.target.value;
+    //this.borderRadius = event.target.value;
+    this.buttonStatus = false;
     this.setState({ borderRadius: event.target.value });
   };
 
   handleWidthChange = (event) => {
-    this.borderWidth = event.target.value;
+    //this.borderWidth = event.target.value;
+    this.buttonStatus = false;
     this.setState({ borderWidth: event.target.value });
   };
 
   handlePaddingChange = (event) => {
-    this.borderPadding = event.target.value;
+    //this.borderPadding = event.target.value;
+    this.buttonStatus = false;
     this.setState({ borderPadding: event.target.value });
   };
 
   handleMarginChange = (event) => {
-    this.borderMargin = event.target.value;
+    //this.borderMargin = event.target.value;
+    this.buttonStatus = false;
     this.setState({ borderMargin: event.target.value });
   };
 
   handleFontSizeChange = (event) => {
-    this.fontSize = event.target.value;
+    //this.fontSize = event.target.value;
+    this.buttonStatus = false;
+    console.log("change font size");
     this.setState({ fontSize: event.target.value });
   };
 
@@ -132,15 +144,17 @@ class EditLogoScreen extends Component {
     borderMargin,
     fontSize
   ) {
-    this.text = text;
-    this.color = color;
-    this.backgroundColor = backgroundColor;
-    this.borderColor = borderColor;
-    this.borderRadius = borderRadius;
-    this.borderWidth = borderWidth;
-    this.borderPadding = borderPadding;
-    this.borderMargin = borderMargin;
-    this.fontSize = fontSize;
+    this.setState({
+      text: text,
+      color: color,
+      backgroundColor: backgroundColor,
+      borderColor: borderColor,
+      borderRadius: borderRadius,
+      borderWidth: borderWidth,
+      borderPadding: borderPadding,
+      borderMargin: borderMargin,
+      fontSize: fontSize,
+    });
   }
   render() {
     return (
@@ -151,18 +165,32 @@ class EditLogoScreen extends Component {
         {({ loading, error, data }) => {
           if (loading) return "Loading...";
           if (error) return `Error! ${error.message}`;
+          if (this.state.text === null) {
+            console.log("State is null");
+            this.changeAll(
+              data.logo.text,
+              data.logo.color,
+              data.logo.backgroundColor,
+              data.logo.borderColor,
+              data.logo.borderRadius,
+              data.logo.borderWidth,
+              data.logo.borderPadding,
+              data.logo.borderMargin,
+              data.logo.fontSize
+            );
+          }
 
-          this.changeAll(
-            data.logo.text,
-            data.logo.color,
-            data.logo.backgroundColor,
-            data.logo.borderColor,
-            data.logo.borderRadius,
-            data.logo.borderWidth,
-            data.logo.borderPadding,
-            data.logo.borderMargin,
-            data.logo.fontSize
-          );
+          // this.setState({
+          //   text: data.logo.text,
+          //   color: data.logo.color,
+          //   fontSize: data.logo.fontSize,
+          //   borderColor: data.logo.borderColor,
+          //   backgroundColor: data.logo.backgroundColor, //chnaged
+          //   borderRadius: data.logo.borderRadius, //changed
+          //   borderWidth: data.logo.borderWidth,
+          //   borderPadding: data.logo.borderPadding,
+          //   borderMargin: data.logo.borderMargin,
+          // });
           return (
             <Mutation
               mutation={UPDATE_LOGO}
@@ -185,26 +213,17 @@ class EditLogoScreen extends Component {
                           updateLogo({
                             variables: {
                               id: data.logo._id,
-                              text: this.text,
-                              color: this.color,
-                              backgroundColor: this.backgroundColor,
-                              borderColor: this.borderColor,
-                              borderRadius: parseInt(this.borderRadius),
-                              borderWidth: parseInt(this.borderWidth),
-                              borderPadding: parseInt(this.borderPadding),
-                              borderMargin: parseInt(this.borderMargin),
-                              fontSize: parseInt(this.fontSize),
+                              text: this.state.text,
+                              color: this.state.color,
+                              backgroundColor: this.state.backgroundColor,
+                              borderColor: this.state.borderColor,
+                              borderRadius: parseInt(this.state.borderRadius),
+                              borderWidth: parseInt(this.state.borderWidth),
+                              borderPadding: parseInt(this.state.borderPadding),
+                              borderMargin: parseInt(this.state.borderMargin),
+                              fontSize: parseInt(this.state.fontSize),
                             },
                           });
-                          // this.text = "";
-                          // this.color = "";
-                          // this.backgroundColor = "";
-                          // this.borderColor = "";
-                          // this.borderRadius = "";
-                          // this.borderWidth = "";
-                          // this.borderPadding = "";
-                          // this.borderMargin = "";
-                          // this.fontSize = "";
                         }}
                       >
                         <div className="form-group">
@@ -357,7 +376,11 @@ class EditLogoScreen extends Component {
                           />
                         </div>
 
-                        <button type="submit" className="btn btn-success">
+                        <button
+                          type="submit"
+                          className="btn btn-success"
+                          disabled={this.buttonStatus}
+                        >
                           Submit
                         </button>
                       </form>
@@ -369,21 +392,21 @@ class EditLogoScreen extends Component {
                   <div
                     className="rightbox"
                     style={{
-                      color: data.logo.color,
-                      fontSize: data.logo.fontSize,
-                      backgroundColor: data.logo.backgroundColor, //changed
-                      borderRadius: data.logo.borderRadius, //changed
-                      borderColor: data.logo.borderColor,
-                      borderWidth: data.logo.borderWidth,
-                      padding: data.logo.borderPadding,
-                      margin: data.logo.borderMargin,
+                      color: this.state.color,
+                      fontSize: parseInt(this.state.fontSize),
+                      backgroundColor: this.state.backgroundColor, //changed
+                      borderRadius: parseInt(this.state.borderRadius), //changed
+                      borderColor: this.state.borderColor,
+                      borderWidth: parseInt(this.state.borderWidth),
+                      padding: parseInt(this.state.borderPadding),
+                      margin: parseInt(this.state.borderMargin),
                       borderStyle: "solid",
                       whiteSpace: "pre-wrap",
                       // position: "relative",
                       // width: "auto",
                     }}
                   >
-                    <span style={{ float: "right" }}> {data.logo.text} </span>
+                    {this.state.text}
                   </div>
                 </div>
               )}
