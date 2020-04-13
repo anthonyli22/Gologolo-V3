@@ -64,6 +64,7 @@ class EditLogoScreen extends Component {
       borderPadding: null,
       borderMargin: null,
       fontSize: null,
+      whiteSpace: null,
     };
   }
 
@@ -80,7 +81,11 @@ class EditLogoScreen extends Component {
 
   handleTextChange = (event) => {
     //this.text = event.target.value;
-    this.buttonStatus = false;
+    if (event.target.value.trim() === "") {
+      this.buttonStatus = true;
+    } else {
+      this.buttonStatus = false;
+    }
     this.setState({ text: event.target.value });
   };
 
@@ -129,7 +134,7 @@ class EditLogoScreen extends Component {
   handleFontSizeChange = (event) => {
     //this.fontSize = event.target.value;
     this.buttonStatus = false;
-    console.log("change font size");
+    //console.log("change font size");
     this.setState({ fontSize: event.target.value });
   };
 
@@ -166,7 +171,7 @@ class EditLogoScreen extends Component {
           if (loading) return "Loading...";
           if (error) return `Error! ${error.message}`;
           if (this.state.text === null) {
-            console.log("State is null");
+            //console.log("State is null");
             this.changeAll(
               data.logo.text,
               data.logo.color,
@@ -180,17 +185,6 @@ class EditLogoScreen extends Component {
             );
           }
 
-          // this.setState({
-          //   text: data.logo.text,
-          //   color: data.logo.color,
-          //   fontSize: data.logo.fontSize,
-          //   borderColor: data.logo.borderColor,
-          //   backgroundColor: data.logo.backgroundColor, //chnaged
-          //   borderRadius: data.logo.borderRadius, //changed
-          //   borderWidth: data.logo.borderWidth,
-          //   borderPadding: data.logo.borderPadding,
-          //   borderMargin: data.logo.borderMargin,
-          // });
           return (
             <Mutation
               mutation={UPDATE_LOGO}
@@ -402,6 +396,7 @@ class EditLogoScreen extends Component {
                       margin: parseInt(this.state.borderMargin),
                       borderStyle: "solid",
                       whiteSpace: "pre-wrap",
+                      position: "center",
                       // position: "relative",
                       // width: "auto",
                     }}

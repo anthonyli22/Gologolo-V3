@@ -45,12 +45,17 @@ class CreateLogoScreen extends Component {
       borderWidth: 30,
       borderPadding: 15,
       borderMargin: 15,
+      whiteSpace: false,
     };
   }
 
   handleTextChange = (event) => {
     //this.text = event.target.value;
-    this.setState({ text: event.target.value });
+    if (event.target.value.trim() === "") {
+      this.setState({ text: event.target.value, whiteSpace: true });
+    } else {
+      this.setState({ text: event.target.value, whiteSpace: false });
+    }
   };
 
   handleColorChange = (event) => {
@@ -288,7 +293,11 @@ class CreateLogoScreen extends Component {
                     />
                   </div>
 
-                  <button type="submit" className="btn btn-success">
+                  <button
+                    type="submit"
+                    className="btn btn-success"
+                    disabled={this.state.whiteSpace}
+                  >
                     Submit
                   </button>
                 </form>

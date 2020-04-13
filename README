@@ -3,10 +3,10 @@ Sample queries
 - Adding a Logo
 mutation{
   addLogo(
-    text: "Debugging Enterprises",
-    color: "#ff33dd",
+    text: "Debugging",
+    color: "#ffffff",
     backgroundColor: "#ff33dd",
-    borderColor: "#ff33dd",
+    borderColor: "#ff00ff",
     borderRadius: 15,
     borderMargin: 15,
     borderPadding: 15,
@@ -20,16 +20,16 @@ mutation{
 - Update a Logo
 mutation{
   updateLogo(
-    id: "5e8e20ab1a5fc136bc016f54"
-    text: "Blue"
-    color: "#ffffff"
+    id: "5e93e4928a839146cca00930"
+    text: "Logosssssss"
+    color: "#ff00ff"
     backgroundColor: "#ffffff" 
-    borderColor: "#ffffff"
-    borderRadius: 5
-    borderWidth: 5
-    borderPadding: 5
+    borderColor: "#f0f0f0"
+    borderRadius: 15
+    borderWidth: 15
+    borderPadding: 15
     borderMargin: 10
-    fontSize: 15
+    fontSize: 100
   ){
     lastUpdate
   }
@@ -38,7 +38,7 @@ mutation{
 
 - Remove a Logo
 mutation{
-  removeLogo(id: "5e8e209e1a5fc136bc016f53" ) {
+  removeLogo(id: "5e94d6918b9c391f28c7113a" ) {
     _id
     text
     color

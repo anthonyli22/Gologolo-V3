@@ -88,10 +88,7 @@ class ViewLogoScreen extends Component {
                     <dd> {data.logo.borderWidth} </dd>
 
                     <dt> Border Padding: </dt>
-                    <dd style={{ color: "blue" }}>
-                      {" "}
-                      {data.logo.borderPadding}{" "}
-                    </dd>
+                    <dd> {data.logo.borderPadding} </dd>
 
                     <dt> Border Margin: </dt>
                     <dd> {data.logo.borderMargin} </dd>
